@@ -32,8 +32,7 @@ cd "${GITHUB_WORKSPACE}"
 cp -r config-files "${ARTIFACTS_PATH}"
 
 echo "----> Compress files"
-cd "${PROJECT_ROOT}"
-tar cvfz "${RELEASE_ASSET_NAME}".tar.gz ".artifacts"
+tar cvfz "${RELEASE_ASSET_NAME}".tar.gz .artifacts/*
 
 echo "----> Build is complete"
 
