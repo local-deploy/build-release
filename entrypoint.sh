@@ -35,6 +35,7 @@ tar cvfz "${RELEASE_ASSET_NAME}".tar.gz config-files bin
 
 echo "----> Build is complete"
 
+echo "----> Releases info"
 github-release info -u local-deploy -r "${BINARY_NAME}"
 
 echo "----> Create release"
