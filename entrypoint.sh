@@ -40,8 +40,8 @@ github-release info -u local-deploy -r "${BINARY_NAME}"
 
 echo "${BINARY_NAME}"
 echo "${RELEASE_TAG}"
-echo "${GITHUB_SHA}"
-echo "${RELEASE_ASSET_NAME}"
+echo "${GITHUB_ACTOR}"
+echo "${GITHUB_TOKEN}"
 
 echo "----> Create release"
 github-release release \
@@ -49,7 +49,8 @@ github-release release \
   --repo "${BINARY_NAME}" \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_TAG}" \
-  --description "${GITHUB_SHA}"
+  --description "${GITHUB_SHA}" \
+  --security-token "${GITHUB_TOKEN}"
 
 echo "----> Upload files"
 github-release upload \
@@ -57,4 +58,5 @@ github-release upload \
   --repo "${BINARY_NAME}" \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_ASSET_NAME}".tar.gz \
-  --file "${RELEASE_ASSET_NAME}".tar.gz
+  --file "${RELEASE_ASSET_NAME}".tar.gz \
+  --security-token "${GITHUB_TOKEN}"
