@@ -38,6 +38,11 @@ echo "----> Build is complete"
 echo "----> Releases info"
 github-release info -u local-deploy -r "${BINARY_NAME}"
 
+echo "${BINARY_NAME}"
+echo "${RELEASE_TAG}"
+echo "${GITHUB_SHA}"
+echo "${RELEASE_ASSET_NAME}"
+
 echo "----> Create release"
 github-release release \
   --user local-deploy \
