@@ -36,7 +36,7 @@ tar cvfz "${RELEASE_ASSET_NAME}".tar.gz config-files bin
 echo "----> Build is complete"
 
 
-stat ~/.local/bin/github-release
+stat /usr/local/bin/github-release
 
 echo "----> Releases info"
 /usr/local/bin/github-release info -u local-deploy -r "${BINARY_NAME}"
