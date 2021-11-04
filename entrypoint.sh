@@ -50,7 +50,8 @@ github-release release \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_TAG}" \
   --description "${GITHUB_SHA}" \
-  --security-token "${GITHUB_TOKEN}"
+  --security-token "${GITHUB_TOKEN}" \
+  --verbose
 
 echo "----> Upload files"
 github-release upload \
@@ -59,4 +60,5 @@ github-release upload \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_ASSET_NAME}".tar.gz \
   --file "${RELEASE_ASSET_NAME}".tar.gz \
-  --security-token "${GITHUB_TOKEN}"
+  --security-token "${GITHUB_TOKEN}" \
+  --verbose
