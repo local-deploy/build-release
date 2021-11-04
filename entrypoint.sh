@@ -44,21 +44,19 @@ echo "${GITHUB_ACTOR}"
 echo "${GITHUB_TOKEN}"
 
 echo "----> Create release"
-github-release release \
+github-release -v release \
   --user local-deploy \
   --repo "${BINARY_NAME}" \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_TAG}" \
   --description "${GITHUB_SHA}" \
-  --security-token "${GITHUB_TOKEN}" \
-  --verbose
+  --security-token "${GITHUB_TOKEN}"
 
 echo "----> Upload files"
-github-release upload \
+github-release -v upload \
   --user local-deploy \
   --repo "${BINARY_NAME}" \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_ASSET_NAME}".tar.gz \
   --file "${RELEASE_ASSET_NAME}".tar.gz \
-  --security-token "${GITHUB_TOKEN}" \
-  --verbose
+  --security-token "${GITHUB_TOKEN}"
