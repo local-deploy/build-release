@@ -36,14 +36,10 @@ tar cvfz "${RELEASE_ASSET_NAME}".tar.gz config-files bin
 echo "----> Build is complete"
 
 echo "----> Releases info"
-github-release info -u local-deploy -r "${BINARY_NAME}"
-
-echo $PATH
-whereis github-release
-github-release --version
+/usr/local/bin/github-release info -u local-deploy -r "${BINARY_NAME}"
 
 echo "----> Create release"
-github-release -v release \
+/usr/local/bin/github-release -v release \
   --user local-deploy \
   --repo dl \
   --tag "${RELEASE_TAG}" \
@@ -52,7 +48,7 @@ github-release -v release \
   --security-token "${GITHUB_TOKEN}"
 
 echo "----> Upload files"
-github-release -v upload \
+/usr/local/bin/github-release -v upload \
   --user local-deploy \
   --repo dl \
   --tag "${RELEASE_TAG}" \
