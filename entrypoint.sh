@@ -44,7 +44,7 @@ github-release release \
   --description "${GITHUB_SHA}"
 
 echo "----> Upload files"
-github-release -v upload \
+github-release upload \
   --user local-deploy \
   --repo dl \
   --tag "${RELEASE_TAG}" \
