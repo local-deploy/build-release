@@ -7,7 +7,7 @@ BINARY_PATH="${GITHUB_WORKSPACE}/bin"
 BINARY_NAME=$(basename "${GITHUB_REPOSITORY}")
 RELEASE_TAG=$(basename "${GITHUB_REF}")
 RELEASE_ASSET_NAME=${BINARY_NAME}-${RELEASE_TAG}
-TARGETS=("darwin/amd64" "linux/amd64")
+TARGETS=("linux/amd64") # "darwin/amd64"
 
 echo "----> Setting up repository"
 mkdir -p "${BINARY_PATH}"
@@ -38,15 +38,14 @@ echo "----> Build is complete"
 echo "----> Releases info"
 github-release info -u local-deploy -r "${BINARY_NAME}"
 
-echo "${BINARY_NAME}"
-echo "${RELEASE_TAG}"
-echo "${GITHUB_ACTOR}"
-echo "${GITHUB_TOKEN}"
+echo $PATH
+whereis github-release
+github-release --version
 
 echo "----> Create release"
 github-release -v release \
   --user local-deploy \
-  --repo "${BINARY_NAME}" \
+  --repo dl \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_TAG}" \
   --description "${GITHUB_SHA}" \
@@ -55,7 +54,7 @@ github-release -v release \
 echo "----> Upload files"
 github-release -v upload \
   --user local-deploy \
-  --repo "${BINARY_NAME}" \
+  --repo dl \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_ASSET_NAME}".tar.gz \
   --file "${RELEASE_ASSET_NAME}".tar.gz \
