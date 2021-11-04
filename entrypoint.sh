@@ -37,7 +37,7 @@ echo "----> Build is complete"
 
 echo "----> Create release"
 github-release release \
-  --user "${GITHUB_ACTOR}" \
+  --user local-deploy \
   --repo "${BINARY_NAME}" \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_TAG}" \
@@ -45,7 +45,7 @@ github-release release \
 
 echo "----> Upload files"
 github-release upload \
-  --user "${GITHUB_ACTOR}" \
+  --user local-deploy \
   --repo "${BINARY_NAME}" \
   --tag "${RELEASE_TAG}" \
   --name "${RELEASE_ASSET_NAME}".tar.gz \
