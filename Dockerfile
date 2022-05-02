@@ -1,8 +1,8 @@
-FROM golang:1.17.2
+FROM golang:1.18.1
 
 LABEL name="Go Builder"
 LABEL maintainer="dl@varme.pw"
-LABEL version="1.0.0"
+LABEL version="1.0.2"
 
 COPY entrypoint.sh /entrypoint.sh
 COPY github-release /usr/local/bin/github-release

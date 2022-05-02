@@ -43,6 +43,8 @@ github-release release \
   --name "${RELEASE_TAG}" \
   --description "${GITHUB_SHA}"
 
+sleep 2
+
 echo "----> Upload files"
 github-release upload \
   --user local-deploy \
