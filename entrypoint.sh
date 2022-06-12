@@ -7,7 +7,7 @@ BINARY_PATH="${GITHUB_WORKSPACE}/bin"
 BINARY_NAME=$(basename "${GITHUB_REPOSITORY}")
 RELEASE_TAG=$(basename "${GITHUB_REF}")
 RELEASE_ASSET_NAME=${BINARY_NAME}-${RELEASE_TAG}
-TARGETS=("linux/amd64") # "darwin/amd64"
+TARGETS=("linux/amd64" "darwin/amd64")
 
 echo "----> Setting up repository"
 mkdir -p "${BINARY_PATH}"
