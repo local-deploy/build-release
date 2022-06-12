@@ -32,6 +32,7 @@ cd "${GITHUB_WORKSPACE}"
 
 echo "----> Compress files"
 tar cvfz "${RELEASE_ASSET_NAME}".tar.gz config-files bin
+sleep 2
 
 echo "----> Build is complete"
 
@@ -43,7 +44,7 @@ github-release release \
   --name "${RELEASE_TAG}" \
   --description "${GITHUB_SHA}"
 
-sleep 2
+sleep 5
 
 echo "----> Upload files"
 github-release upload \
