@@ -44,7 +44,7 @@ github-release release \
   --name "${RELEASE_TAG}" \
   --description "${GITHUB_SHA}"
 
-sleep 5
+sleep 10
 
 echo "----> Upload files"
 github-release upload \
