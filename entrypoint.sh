@@ -19,7 +19,7 @@ echo "----> Loading dependencies"
 go mod download
 
 echo "----> Building"
-gox -osarch=${TARGETS} -output="${BINARY_PATH}/${BINARY_NAME}_{{.OS}}_{{.Arch}}"
+gox -osarch="${TARGETS}" -output="${BINARY_PATH}/${BINARY_NAME}_{{.OS}}_{{.Arch}}"
 
 echo "----> Prepare config files"
 cd "${GITHUB_WORKSPACE}"
