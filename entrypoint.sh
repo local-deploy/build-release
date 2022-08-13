@@ -7,7 +7,7 @@ BINARY_PATH="${GITHUB_WORKSPACE}/bin"
 BINARY_NAME=$(basename "${GITHUB_REPOSITORY}")
 RELEASE_TAG=$(basename "${GITHUB_REF}")
 RELEASE_ASSET_NAME=${BINARY_NAME}-${RELEASE_TAG}
-TARGETS=("linux/amd64" "darwin/amd64")
+TARGETS="linux/amd64 linux/arm64 darwin/amd64 darwin/arm64"
 
 echo "----> Setting up repository"
 mkdir -p "${BINARY_PATH}"
@@ -18,14 +18,8 @@ cd "${PROJECT_ROOT}"
 echo "----> Loading dependencies"
 go mod download
 
-for target in "${TARGETS[@]}"; do
-  os="$(echo "${target}" | cut -d '/' -f1)"
-  arch="$(echo "${target}" | cut -d '/' -f2)"
-  output="${BINARY_PATH}/${BINARY_NAME}_${os}_${arch}"
-
-  echo "----> Building project for: ${target}"
-  GOOS=${os} GOARCH=${arch} CGO_ENABLED=0 go build -o "${output}"
-done
+echo "----> Building"
+gox -osarch=${TARGETS} -output="${BINARY_PATH}/${BINARY_NAME}_{{.OS}}_{{.Arch}}"
 
 echo "----> Prepare config files"
 cd "${GITHUB_WORKSPACE}"
