@@ -26,24 +26,5 @@ cd "${GITHUB_WORKSPACE}"
 
 echo "----> Compress files"
 tar cvfz "${RELEASE_ASSET_NAME}".tar.gz config-files bin
-sleep 2
 
 echo "----> Build is complete"
-
-echo "----> Create release"
-github-release release \
-  --user local-deploy \
-  --repo dl \
-  --tag "${RELEASE_TAG}" \
-  --name "${RELEASE_TAG}" \
-  --description "${GITHUB_SHA}"
-
-sleep 10
-
-echo "----> Upload files"
-github-release upload \
-  --user local-deploy \
-  --repo dl \
-  --tag "${RELEASE_TAG}" \
-  --name "${RELEASE_ASSET_NAME}".tar.gz \
-  --file "${RELEASE_ASSET_NAME}".tar.gz
